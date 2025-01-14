@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  angular-app:
+    image: angular-cli
+    container_name: contenedor-angular
+    build: .
+    ports:
+     - "4200:4200"
+    volumes:
+     - ./:/usr/src/app
+    stdin_open: true # Equivale a -ti (mantener el contenedor interactivo)
+    tty: true # Habilita la terminal interactiva
+    command: bash -c "npm install && npm run build && echo 'Iniciando aplicación...' && ng serve --host 0.0.0.0" # Comando a ejecutar en el contenedor
